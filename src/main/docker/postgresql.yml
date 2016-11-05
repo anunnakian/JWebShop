@@ -1,0 +1,12 @@
+version: '2'
+services:
+    jwebshop-postgresql:
+        container_name: jwebshop-postgresql
+        image: postgres:9.5.4
+        # volumes:
+        #     - ~/volumes/jhipster/JWebShop/postgresql/:/var/lib/postgresql/
+        environment:
+            - POSTGRES_USER=JWebShop
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432
