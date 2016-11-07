@@ -26,8 +26,8 @@ spring:
         type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:postgresql://localhost:5432/JWebShop
         name:
-        username: JWebShop
-        password:
+        username: postgres
+        password: devoxxma
     jpa:
         database-platform: fr.ippon.jwebshop.domain.util.FixedPostgreSQL82Dialect
         database: POSTGRESQL
