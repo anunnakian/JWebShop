@@ -5,11 +5,12 @@
         .module('jWebShopApp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state'];
+    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state', 'Product'];
 
-    function HomeController ($scope, Principal, LoginService, $state) {
+    function HomeController ($scope, Principal, LoginService, $state, Product) {
         var vm = this;
 
+        vm.products = [];
         vm.account = null;
         vm.isAuthenticated = null;
         vm.login = LoginService.open;
@@ -18,6 +19,7 @@
             getAccount();
         });
 
+        loadAll();
         getAccount();
 
         function getAccount() {
@@ -28,6 +30,11 @@
         }
         function register () {
             $state.go('register');
+        }
+        function loadAll() {
+            Product.query(function(result) {
+                vm.products = result;
+            });
         }
     }
 })();
