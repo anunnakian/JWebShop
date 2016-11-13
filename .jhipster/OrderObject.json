@@ -1,0 +1,23 @@
+{
+  "fluentMethods": true,
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "relationshipValidateRules": "required",
+      "relationshipName": "orderLine",
+      "otherEntityName": "orderLine",
+      "otherEntityRelationshipName": "orderObject"
+    }
+  ],
+  "fields": [
+    {
+      "fieldName": "orderNumber",
+      "fieldType": "Integer"
+    }
+  ],
+  "changelogDate": "20161113140649",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "order_object"
+}

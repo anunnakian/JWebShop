@@ -1,0 +1,23 @@
+{
+    "jWebShopApp": {
+        "orderObject" : {
+            "home": {
+                "title": "Order Objects",
+                "createLabel": "Create a new Order Object",
+                "createOrEditLabel": "Create or edit a Order Object",
+                "search": "Search for Order Object"
+            },
+            "created": "A new Order Object is created with identifier {{ param }}",
+            "updated": "A Order Object is updated with identifier {{ param }}",
+            "deleted": "A Order Object is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Order Object {{ id }}?"
+            },
+            "detail": {
+                "title": "Order Object"
+            },
+            "orderNumber": "Order Number",
+            "orderLine": "Order Line"
+        }
+    }
+}

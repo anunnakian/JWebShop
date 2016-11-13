@@ -1,0 +1,24 @@
+{
+    "jWebShopApp": {
+        "orderLine" : {
+            "home": {
+                "title": "Order Lines",
+                "createLabel": "Create a new Order Line",
+                "createOrEditLabel": "Create or edit a Order Line",
+                "search": "Search for Order Line"
+            },
+            "created": "A new Order Line is created with identifier {{ param }}",
+            "updated": "A Order Line is updated with identifier {{ param }}",
+            "deleted": "A Order Line is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Order Line {{ id }}?"
+            },
+            "detail": {
+                "title": "Order Line"
+            },
+            "qty": "Qty",
+            "orderObject": "Order Object",
+            "product": "Product"
+        }
+    }
+}

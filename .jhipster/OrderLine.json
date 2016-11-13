@@ -1,0 +1,28 @@
+{
+  "fluentMethods": true,
+  "relationships": [
+    {
+      "relationshipName": "orderObject",
+      "otherEntityName": "orderObject",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "relationshipName": "product",
+      "otherEntityName": "product",
+      "otherEntityField": "id"
+    }
+  ],
+  "fields": [
+    {
+      "fieldName": "qty",
+      "fieldType": "Integer"
+    }
+  ],
+  "changelogDate": "20161113140652",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "order_line"
+}
