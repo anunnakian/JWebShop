@@ -5,52 +5,38 @@
             <p class="lead" data-translate="home.subtitle">Product list</p>
 
             <div class="table-responsive">
-                <table class="jh-table table table-striped">
-                    <tbody>
-                    <tr ng-repeat="product in vm.products track by product.id">
-                        <td>
-                            <a ng-if="product.picture" ng-click="vm.openFile(product.pictureContentType, product.picture)">
-                                <img data-ng-src="{{'data:' + product.pictureContentType + ';base64,' + product.picture}}" style="max-height: 30px;"/>
-                            </a>
-                        </td>
-                        <td>{{product.reference}}</td>
-                        <td>{{product.productName}}</td>
-                        <td>{{product.description}}</td>
-                        <td>{{product.price}} Euro</td>
-                        <td>
-                            <a ui-sref="category-detail({id:product.category.id})">{{product.category.categoryName}}</a>
-                        </td>
-                        <!--<td class="text-right">-->
-                            <!--<div class="btn-group flex-btn-group-container">-->
-                                <!--<button type="submit"-->
-                                        <!--ui-sref="product-detail({id:product.id})"-->
-                                        <!--class="btn btn-info btn-sm">-->
-                                    <!--<span class="glyphicon glyphicon-eye-open"></span>-->
-                                    <!--<span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>-->
-                                <!--</button>-->
-                                <!--<button type="submit"-->
-                                        <!--ui-sref="product.edit({id:product.id})"-->
-                                        <!--class="btn btn-primary btn-sm">-->
-                                    <!--<span class="glyphicon glyphicon-pencil"></span>-->
-                                    <!--<span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>-->
-                                <!--</button>-->
-                            <!--</div>-->
-                        <!--</td>-->
-                    </tr>
-                    </tbody>
-                </table>
+
+                <div class="col-xs-3 ng-scope" ng-repeat="product in vm.products track by product.id">
+                    <div class="thumbnail">
+                        <img
+                            data-ng-src="{{'data:' + product.pictureContentType + ';base64,' + product.picture}}"
+                            style="max-height: 30px;"/>
+                        <h4 class="ng-binding">{{product.category.categoryName}} - {{product.productName}}</h4>
+                        <p class="ng-binding">{{product.description}}</p>
+                        <h3 class="price ng-binding">{{product.price}} Euro</h3>
+                        <ngcart-addtocart id="{{ product.id }}" name="{{ product.productName }}"
+                                          price="{{ product.price }}" quantity="1" quantity-max="30" data="product">
+                            <span data-translate="product.action.addToCart"></span>
+                        </ngcart-addtocart>
+                    </div>
+                </div>
             </div>
 
             <div ng-switch="vm.isAuthenticated()">
-                <div class="alert alert-success" ng-switch-when="true" data-translate="home.logged.message" translate-values="{username: '{{vm.account.login}}'}">
+                <div class="alert alert-success" ng-switch-when="true" data-translate="home.logged.message"
+                     translate-values="{username: '{{vm.account.login}}'}">
                     You are logged in as user "{{vm.account.login}}".
                 </div>
 
-                <div class="alert alert-warning" ng-switch-when="false" data-translate="global.messages.info.authenticated" translate-compile>
-                    If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").
+                <div class="alert alert-warning" ng-switch-when="false"
+                     data-translate="global.messages.info.authenticated" translate-compile>
+                    If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the
+                    default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user"
+                    and password="user").
                 </div>
 
-                <div class="alert alert-warning" ng-switch-when="false" data-translate="global.messages.info.register" translate-compile>
+                <div class="alert alert-warning" ng-switch-when="false" data-translate="global.messages.info.register"
+                     translate-compile>
                     You don't have an account yet? <a class="alert-link" ui-sref="register">Register a new account</a>
                 </div>
             </div>

@@ -332,3 +332,25 @@ ui bootstrap tweaks
 
 
 /* jhipster-needle-css-add-main JHipster will add new css style */
+
+.thumbnail {
+    height: 300px
+}
+
+.thumbnail img {
+    width: 60%
+}
+
+.thumbnail p {
+    height: 63px;
+    overflow: hidden;
+    font-size: 12px
+}
+
+.thumbnail .price {
+    color: #3a1
+}
+
+.thumbnail h3 {
+    height: 50px
+}

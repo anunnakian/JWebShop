@@ -15,5 +15,10 @@
         },
         "like": "Si vous aimez JHipster, donnez nous une étoile sur",
         "github": "GitHub"
+    },
+    "product": {
+        "action": {
+            "addToCart": "Ajouter au Panier"
+        }
     }
 }
