@@ -176,6 +176,9 @@
                         </li>
                     </ul>
                 </li>
+                <li ng-class="{active: vm.$state.includes('user')}"  has-authority="ROLE_USER" class="dropdown pointer">
+                    <ngcart-summary></ngcart-summary>
+                </li>
             </ul>
         </div>
     </div>
