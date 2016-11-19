@@ -15,6 +15,11 @@
                     templateUrl: 'app/layouts/navbar/navbar.html',
                     controller: 'NavbarController',
                     controllerAs: 'vm'
+                },
+                'topmenu@': {
+                    templateUrl: 'app/layouts/topmenu/topmenu.html',
+                    controller: 'TopMenuController',
+                    controllerAs: 'vm'
                 }
             },
             resolve: {

@@ -354,3 +354,13 @@ ui bootstrap tweaks
 .thumbnail h3 {
     height: 50px
 }
+
+/* Cart */
+.navbar-right .row {
+    margin-right: 0px;
+    margin-top: 5px;
+}
+
+.navbar-right .cart-link {
+    padding: 0!important;
+}
