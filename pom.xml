@@ -560,8 +560,8 @@
                     <driver>org.postgresql.Driver</driver>
                     <url>jdbc:postgresql://localhost:5432/JWebShop</url>
                     <defaultSchemaName></defaultSchemaName>
-                    <username>JWebShop</username>
-                    <password></password>
+                    <username>postgres</username>
+                    <password>devoxxma</password>
                     <referenceUrl>hibernate:spring:fr.ippon.jwebshop.domain?dialect=org.hibernate.dialect.PostgreSQL82Dialect&amp;hibernate.ejb.naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringNamingStrategy</referenceUrl>
                     <verbose>true</verbose>
                     <logging>debug</logging>
