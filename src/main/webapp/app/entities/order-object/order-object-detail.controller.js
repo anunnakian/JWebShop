@@ -5,9 +5,9 @@
         .module('jWebShopApp')
         .controller('OrderObjectDetailController', OrderObjectDetailController);
 
-    OrderObjectDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'OrderObject', 'OrderLine'];
+    OrderObjectDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'OrderObject', 'OrderLine', 'User'];
 
-    function OrderObjectDetailController($scope, $rootScope, $stateParams, previousState, entity, OrderObject, OrderLine) {
+    function OrderObjectDetailController($scope, $rootScope, $stateParams, previousState, entity, OrderObject, OrderLine, User) {
         var vm = this;
 
         vm.orderObject = entity;

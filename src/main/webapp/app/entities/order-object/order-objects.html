@@ -20,6 +20,7 @@
                 <tr>
                     <th><span data-translate="global.field.id">ID</span></th>
                     <th><span data-translate="jWebShopApp.orderObject.orderNumber">Order Number</span></th>
+                    <th><span data-translate="jWebShopApp.orderObject.user">User</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -27,6 +28,9 @@
                 <tr ng-repeat="orderObject in vm.orderObjects track by orderObject.id">
                     <td><a ui-sref="order-object-detail({id:orderObject.id})">{{orderObject.id}}</a></td>
                     <td>{{orderObject.orderNumber}}</td>
+                    <td>
+                        {{orderObject.user.login}}
+                    </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

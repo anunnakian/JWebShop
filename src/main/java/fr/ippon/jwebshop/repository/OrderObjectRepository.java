@@ -12,4 +12,7 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface OrderObjectRepository extends JpaRepository<OrderObject,Long> {
 
+    @Query("select orderObject from OrderObject orderObject where orderObject.user.login = ?#{principal.username}")
+    List<OrderObject> findByUserIsCurrentUser();
+
 }

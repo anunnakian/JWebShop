@@ -26,6 +26,12 @@
                 This field is required.
             </p>
         </div>
+        <div class="form-group">
+            <label data-translate="jWebShopApp.orderObject.user" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" ng-model="vm.orderObject.user" ng-options="user as user.login for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

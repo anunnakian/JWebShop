@@ -5,15 +5,16 @@
         .module('jWebShopApp')
         .controller('OrderObjectDialogController', OrderObjectDialogController);
 
-    OrderObjectDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'OrderObject', 'OrderLine'];
+    OrderObjectDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'OrderObject', 'OrderLine', 'User'];
 
-    function OrderObjectDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, OrderObject, OrderLine) {
+    function OrderObjectDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, OrderObject, OrderLine, User) {
         var vm = this;
 
         vm.orderObject = entity;
         vm.clear = clear;
         vm.save = save;
         vm.orderlines = OrderLine.query();
+        vm.users = User.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

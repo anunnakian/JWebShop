@@ -17,7 +17,8 @@
                 "title": "Order Object"
             },
             "orderNumber": "Order Number",
-            "orderLine": "Order Line"
+            "orderLine": "Order Line",
+            "user": "User"
         }
     }
 }

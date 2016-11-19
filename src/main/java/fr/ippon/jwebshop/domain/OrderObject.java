@@ -29,6 +29,9 @@ public class OrderObject implements Serializable {
     @JsonIgnore
     private Set<OrderLine> orderLines = new HashSet<>();
 
+    @ManyToOne
+    private User user;
+
     public Long getId() {
         return id;
     }
@@ -73,6 +76,19 @@ public class OrderObject implements Serializable {
 
     public void setOrderLines(Set<OrderLine> orderLines) {
         this.orderLines = orderLines;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public OrderObject user(User user) {
+        this.user = user;
+        return this;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
