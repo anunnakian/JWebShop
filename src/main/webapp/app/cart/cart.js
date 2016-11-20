@@ -10,7 +10,7 @@
     function stateConfig($stateProvider) {
         $stateProvider.state('cart', {
             parent: 'app',
-            url: '/',
+            url: '/cart',
             data: {
                 authorities: []
             },

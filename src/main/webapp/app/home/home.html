@@ -12,11 +12,9 @@
                 <div class="col-xs-3 ng-scope" ng-repeat="product in vm.products track by product.id">
                     <div class="thumbnail">
                         <img
-                            data-ng-src="{{'data:' + product.pictureContentType + ';base64,' + product.picture}}"
-                            style="max-height: 30px;"/>
-                        <h4 class="ng-binding">{{product.category.categoryName}} - {{product.productName}}</h4>
-                        <p class="ng-binding">{{product.description}}</p>
-                        <h3 class="price ng-binding">{{product.price}} Euro</h3>
+                            data-ng-src="{{'data:' + product.pictureContentType + ';base64,' + product.picture}}"/>
+                        <h4 class="ng-binding">{{product.productName}}</h4>
+                        <h3 class="price ng-binding">{{(product.price | number:2) + "€"}}</h3>
                         <ngcart-addtocart id="{{ product.id }}" name="{{ product.productName }}"
                                           price="{{ product.price }}" quantity="1" quantity-max="30" data="product">
                             <span data-translate="product.action.addToCart"></span>
