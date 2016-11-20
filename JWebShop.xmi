@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Code="http:///schemas/Code/_X8-JsKmqEeal2fdWqb6zYA/0" xmlns:JavaExtensions="http:///schemas/JavaExtensions/_X8m9UKmqEeal2fdWqb6zYA/0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xsi:schemaLocation="http:///schemas/Code/_X8-JsKmqEeal2fdWqb6zYA/0 Code.profile.xmi#_X9ZAd6mqEeal2fdWqb6zYA http:///schemas/JavaExtensions/_X8m9UKmqEeal2fdWqb6zYA/0 JavaExtensions.profile.xmi#_X8_X16mqEeal2fdWqb6zYA">
+  <uml:Model xmi:id="_X8eacKmqEeal2fdWqb6zYA" name="jwebshop">
+    <eAnnotations xmi:id="_X8eacamqEeal2fdWqb6zYA" source="Objing">
+      <contents xmi:type="uml:Property" xmi:id="_X8eacqmqEeal2fdWqb6zYA" name="exporterVersion">
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_X8eac6mqEeal2fdWqb6zYA" value="3.0.0"/>
+      </contents>
+    </eAnnotations>
+    <packagedElement xmi:type="uml:Class" xmi:id="_X8eadKmqEeal2fdWqb6zYA" name="OrderObject">
+      <ownedComment xmi:id="_X8eadamqEeal2fdWqb6zYA">
+        <body></body>
+      </ownedComment>
+      <ownedAttribute xmi:id="_X8eadqmqEeal2fdWqb6zYA" name="orderLine" visibility="public" type="_X8fBoqmqEeal2fdWqb6zYA" aggregation="shared" association="_X8eaf6mqEeal2fdWqb6zYA">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_X8ead6mqEeal2fdWqb6zYA" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_X8eaeKmqEeal2fdWqb6zYA" name="orderNumber" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+      <ownedOperation xmi:id="_X8eaeamqEeal2fdWqb6zYA" name="setProduct" visibility="package">
+        <ownedComment xmi:id="_X8eaeqmqEeal2fdWqb6zYA">
+          <body>// Automatically generated method. Please delete this comment before entering specific code.&#xD;
+this.product = value;</body>
+        </ownedComment>
+        <ownedParameter xmi:id="_X8eae6mqEeal2fdWqb6zYA" name="value" type="_X8eagamqEeal2fdWqb6zYA" isUnique="false">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_X8eafKmqEeal2fdWqb6zYA" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_X8eafamqEeal2fdWqb6zYA"/>
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_X8eafqmqEeal2fdWqb6zYA" value=""/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_X8eaf6mqEeal2fdWqb6zYA" memberEnd="_X8eadqmqEeal2fdWqb6zYA _X8eagKmqEeal2fdWqb6zYA">
+      <ownedEnd xmi:id="_X8eagKmqEeal2fdWqb6zYA" visibility="public" type="_X8eadKmqEeal2fdWqb6zYA" association="_X8eaf6mqEeal2fdWqb6zYA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_X8eagamqEeal2fdWqb6zYA" name="Product">
+      <ownedComment xmi:id="_X8eagqmqEeal2fdWqb6zYA">
+        <body>&lt;Enter note text here></body>
+      </ownedComment>
+      <ownedAttribute xmi:id="_X8eag6mqEeal2fdWqb6zYA" name="category" visibility="public" type="_X8fBn6mqEeal2fdWqb6zYA" aggregation="shared" association="_X8fBj6mqEeal2fdWqb6zYA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_X8eahKmqEeal2fdWqb6zYA"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_X8eahamqEeal2fdWqb6zYA" name="productName" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_X8eahqmqEeal2fdWqb6zYA" name="description" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_X8eah6mqEeal2fdWqb6zYA" name="price" visibility="private" type="_X8fBoamqEeal2fdWqb6zYA" isUnique="false"/>
+      <ownedAttribute xmi:id="_X8eaiKmqEeal2fdWqb6zYA" name="reference" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_X8eaiamqEeal2fdWqb6zYA" name="picture" visibility="private" type="_X8fBnamqEeal2fdWqb6zYA" isUnique="false"/>
+      <ownedOperation xmi:id="_X8eaiqmqEeal2fdWqb6zYA" name="getProductName" visibility="package" clientDependency="_X8fBk6mqEeal2fdWqb6zYA">
+        <ownedComment xmi:id="_X8eai6mqEeal2fdWqb6zYA">
+          <body>// Automatically generated method. Please delete this comment before entering specific code.</body>
+        </ownedComment>
+        <ownedComment xmi:id="_X8eajKmqEeal2fdWqb6zYA">
+          <body>return this.productName;</body>
+        </ownedComment>
+        <ownedParameter xmi:id="_X8eajamqEeal2fdWqb6zYA" isUnique="false" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_X8eajqmqEeal2fdWqb6zYA" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_X8eaj6mqEeal2fdWqb6zYA" value="1"/>
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_X8eakKmqEeal2fdWqb6zYA" value=""/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_X8eakamqEeal2fdWqb6zYA" name="setProductName" visibility="package" clientDependency="_X8fBlKmqEeal2fdWqb6zYA">
+        <ownedComment xmi:id="_X8eakqmqEeal2fdWqb6zYA">
+          <body>// Automatically generated method. Please delete this comment before entering specific code.&#xD;
+this.productName = value;</body>
+        </ownedComment>
+        <ownedParameter xmi:id="_X8eak6mqEeal2fdWqb6zYA" name="value" isUnique="false">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_X8ealKmqEeal2fdWqb6zYA" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_X8ealamqEeal2fdWqb6zYA" value="1"/>
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_X8ealqmqEeal2fdWqb6zYA" value=""/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_X8eal6mqEeal2fdWqb6zYA" name="getDescription" visibility="package" clientDependency="_X8fBlamqEeal2fdWqb6zYA">
+        <ownedComment xmi:id="_X8eamKmqEeal2fdWqb6zYA">
+          <body>// Automatically generated method. Please delete this comment before entering specific code.</body>
+        </ownedComment>
+        <ownedComment xmi:id="_X8eamamqEeal2fdWqb6zYA">
+          <body>return this.description;</body>
+        </ownedComment>
+        <ownedParameter xmi:id="_X8eamqmqEeal2fdWqb6zYA" isUnique="false" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_X8eam6mqEeal2fdWqb6zYA" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_X8eanKmqEeal2fdWqb6zYA" value="1"/>
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_X8eanamqEeal2fdWqb6zYA" value=""/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_X8eanqmqEeal2fdWqb6zYA" name="setDescription" visibility="package" clientDependency="_X8fBlqmqEeal2fdWqb6zYA">
+        <ownedComment xmi:id="_X8ean6mqEeal2fdWqb6zYA">
+          <body>// Automatically generated method. Please delete this comment before entering specific code.&#xD;
+this.description = value;</body>
+        </ownedComment>
+        <ownedParameter xmi:id="_X8eaoKmqEeal2fdWqb6zYA" name="value" isUnique="false">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_X8eaoamqEeal2fdWqb6zYA" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_X8eaoqmqEeal2fdWqb6zYA" value="1"/>
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_X8eao6mqEeal2fdWqb6zYA" value=""/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_X8eapKmqEeal2fdWqb6zYA" name="getPrice" visibility="package" clientDependency="_X8fBl6mqEeal2fdWqb6zYA">
+        <ownedComment xmi:id="_X8eapamqEeal2fdWqb6zYA">
+          <body>// Automatically generated method. Please delete this comment before entering specific code.</body>
+        </ownedComment>
+        <ownedComment xmi:id="_X8eapqmqEeal2fdWqb6zYA">
+          <body>return this.price;</body>
+        </ownedComment>
+        <ownedParameter xmi:id="_X8eap6mqEeal2fdWqb6zYA" type="_X8fBoamqEeal2fdWqb6zYA" isUnique="false" direction="return">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_X8eaqKmqEeal2fdWqb6zYA" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_X8eaqamqEeal2fdWqb6zYA" value="1"/>
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_X8eaqqmqEeal2fdWqb6zYA" value=""/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_X8eaq6mqEeal2fdWqb6zYA" name="setPrice" visibility="package" clientDependency="_X8fBmKmqEeal2fdWqb6zYA">
+        <ownedComment xmi:id="_X8earKmqEeal2fdWqb6zYA">
+          <body>// Automatically generated method. Please delete this comment before entering specific code.&#xD;
+this.price = value;</body>
+        </ownedComment>
+        <ownedParameter xmi:id="_X8earamqEeal2fdWqb6zYA" name="value" type="_X8fBoamqEeal2fdWqb6zYA" isUnique="false">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_X8earqmqEeal2fdWqb6zYA" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_X8ear6mqEeal2fdWqb6zYA" value="1"/>
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_X8easKmqEeal2fdWqb6zYA" value=""/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_X8easamqEeal2fdWqb6zYA" name="getReference" visibility="package" clientDependency="_X8fBmamqEeal2fdWqb6zYA">
+        <ownedComment xmi:id="_X8easqmqEeal2fdWqb6zYA">
+          <body>// Automatically generated method. Please delete this comment before entering specific code.</body>
+        </ownedComment>
+        <ownedComment xmi:id="_X8eas6mqEeal2fdWqb6zYA">
+          <body>return this.reference;</body>
+        </ownedComment>
+        <ownedParameter xmi:id="_X8eatKmqEeal2fdWqb6zYA" isUnique="false" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_X8eatamqEeal2fdWqb6zYA" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_X8eatqmqEeal2fdWqb6zYA" value="1"/>
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_X8eat6mqEeal2fdWqb6zYA" value=""/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_X8eauKmqEeal2fdWqb6zYA" name="setReference" visibility="package" clientDependency="_X8fBmqmqEeal2fdWqb6zYA">
+        <ownedComment xmi:id="_X8eauamqEeal2fdWqb6zYA">
+          <body>// Automatically generated method. Please delete this comment before entering specific code.&#xD;
+this.reference = value;</body>
+        </ownedComment>
+        <ownedParameter xmi:id="_X8eauqmqEeal2fdWqb6zYA" name="value" isUnique="false">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_X8eau6mqEeal2fdWqb6zYA" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_X8fBgKmqEeal2fdWqb6zYA" value="1"/>
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_X8fBgamqEeal2fdWqb6zYA" value=""/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_X8fBgqmqEeal2fdWqb6zYA" name="getPicture" visibility="package" clientDependency="_X8fBm6mqEeal2fdWqb6zYA">
+        <ownedComment xmi:id="_X8fBg6mqEeal2fdWqb6zYA">
+          <body>// Automatically generated method. Please delete this comment before entering specific code.</body>
+        </ownedComment>
+        <ownedComment xmi:id="_X8fBhKmqEeal2fdWqb6zYA">
+          <body>return this.picture;</body>
+        </ownedComment>
+        <ownedParameter xmi:id="_X8fBhamqEeal2fdWqb6zYA" type="_X8fBnamqEeal2fdWqb6zYA" isUnique="false" direction="return">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_X8fBhqmqEeal2fdWqb6zYA" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_X8fBh6mqEeal2fdWqb6zYA" value="1"/>
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_X8fBiKmqEeal2fdWqb6zYA" value=""/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_X8fBiamqEeal2fdWqb6zYA" name="setPicture" visibility="package" clientDependency="_X8fBnKmqEeal2fdWqb6zYA">
+        <ownedComment xmi:id="_X8fBiqmqEeal2fdWqb6zYA">
+          <body>// Automatically generated method. Please delete this comment before entering specific code.&#xD;
+this.picture = value;</body>
+        </ownedComment>
+        <ownedParameter xmi:id="_X8fBi6mqEeal2fdWqb6zYA" name="value" type="_X8fBnamqEeal2fdWqb6zYA" isUnique="false">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_X8fBjKmqEeal2fdWqb6zYA" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_X8fBjamqEeal2fdWqb6zYA" value="1"/>
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_X8fBjqmqEeal2fdWqb6zYA" value=""/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_X8fBj6mqEeal2fdWqb6zYA" memberEnd="_X8eag6mqEeal2fdWqb6zYA _X8fBkKmqEeal2fdWqb6zYA">
+      <ownedEnd xmi:id="_X8fBkKmqEeal2fdWqb6zYA" visibility="public" type="_X8eagamqEeal2fdWqb6zYA" association="_X8fBj6mqEeal2fdWqb6zYA">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_X8fBkamqEeal2fdWqb6zYA" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_X8fBkqmqEeal2fdWqb6zYA"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_X8fBk6mqEeal2fdWqb6zYA" name="" supplier="_X8eahamqEeal2fdWqb6zYA" client="_X8eaiqmqEeal2fdWqb6zYA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_X8fBlKmqEeal2fdWqb6zYA" name="" supplier="_X8eahamqEeal2fdWqb6zYA" client="_X8eakamqEeal2fdWqb6zYA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_X8fBlamqEeal2fdWqb6zYA" name="" supplier="_X8eahqmqEeal2fdWqb6zYA" client="_X8eal6mqEeal2fdWqb6zYA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_X8fBlqmqEeal2fdWqb6zYA" name="" supplier="_X8eahqmqEeal2fdWqb6zYA" client="_X8eanqmqEeal2fdWqb6zYA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_X8fBl6mqEeal2fdWqb6zYA" name="" supplier="_X8eah6mqEeal2fdWqb6zYA" client="_X8eapKmqEeal2fdWqb6zYA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_X8fBmKmqEeal2fdWqb6zYA" name="" supplier="_X8eah6mqEeal2fdWqb6zYA" client="_X8eaq6mqEeal2fdWqb6zYA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_X8fBmamqEeal2fdWqb6zYA" name="" supplier="_X8eaiKmqEeal2fdWqb6zYA" client="_X8easamqEeal2fdWqb6zYA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_X8fBmqmqEeal2fdWqb6zYA" name="" supplier="_X8eaiKmqEeal2fdWqb6zYA" client="_X8eauKmqEeal2fdWqb6zYA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_X8fBm6mqEeal2fdWqb6zYA" name="" supplier="_X8eaiamqEeal2fdWqb6zYA" client="_X8fBgqmqEeal2fdWqb6zYA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_X8fBnKmqEeal2fdWqb6zYA" name="" supplier="_X8eaiamqEeal2fdWqb6zYA" client="_X8fBiamqEeal2fdWqb6zYA"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_X8fBnamqEeal2fdWqb6zYA" name="ImageBlob">
+      <ownedComment xmi:id="_X8fBnqmqEeal2fdWqb6zYA">
+        <body></body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_X8fBn6mqEeal2fdWqb6zYA" name="Category">
+      <ownedAttribute xmi:id="_X8fBoKmqEeal2fdWqb6zYA" name="categoryName" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_X8fBoamqEeal2fdWqb6zYA" name="Float"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_X8fBoqmqEeal2fdWqb6zYA" name="OrderLine">
+      <ownedAttribute xmi:id="_X8fBo6mqEeal2fdWqb6zYA" name="product" visibility="public" type="_X8eagamqEeal2fdWqb6zYA" aggregation="shared" association="_X8fBpqmqEeal2fdWqb6zYA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_X8fBpKmqEeal2fdWqb6zYA"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_X8fBpamqEeal2fdWqb6zYA" name="qty" visibility="private" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_X8fBpqmqEeal2fdWqb6zYA" memberEnd="_X8fBo6mqEeal2fdWqb6zYA _X8fBp6mqEeal2fdWqb6zYA">
+      <ownedEnd xmi:id="_X8fBp6mqEeal2fdWqb6zYA" visibility="public" type="_X8fBoqmqEeal2fdWqb6zYA" association="_X8fBpqmqEeal2fdWqb6zYA">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_X8fBqKmqEeal2fdWqb6zYA" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_X8fBqamqEeal2fdWqb6zYA"/>
+      </ownedEnd>
+    </packagedElement>
+    <profileApplication xmi:id="_X9cq0KmqEeal2fdWqb6zYA">
+      <eAnnotations xmi:id="_X9cq0amqEeal2fdWqb6zYA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="JavaExtensions.profile.xmi#_X8_X16mqEeal2fdWqb6zYA"/>
+      </eAnnotations>
+      <appliedProfile href="JavaExtensions.profile.xmi#_X8_X0KmqEeal2fdWqb6zYA"/>
+    </profileApplication>
+    <profileApplication xmi:id="_X9d48KmqEeal2fdWqb6zYA">
+      <eAnnotations xmi:id="_X9d48amqEeal2fdWqb6zYA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="Code.profile.xmi#_X9ZAd6mqEeal2fdWqb6zYA"/>
+      </eAnnotations>
+      <appliedProfile href="Code.profile.xmi#_X9ZAcKmqEeal2fdWqb6zYA"/>
+    </profileApplication>
+  </uml:Model>
+  <JavaExtensions:JavaSetter xmi:id="_X9fuIKmqEeal2fdWqb6zYA" base_Element="_X8eaeamqEeal2fdWqb6zYA"/>
+  <Code:StandardParameter xmi:id="_X9gVMKmqEeal2fdWqb6zYA" base_Element="_X8eae6mqEeal2fdWqb6zYA">
+    <type>List</type>
+  </Code:StandardParameter>
+  <JavaExtensions:JavaGetter xmi:id="_X9g8QKmqEeal2fdWqb6zYA" base_Element="_X8eaiqmqEeal2fdWqb6zYA"/>
+  <JavaExtensions:JavaGetter xmi:id="_X9g8QamqEeal2fdWqb6zYA" base_Element="_X8fBk6mqEeal2fdWqb6zYA"/>
+  <JavaExtensions:JavaSetter xmi:id="_X9hjUKmqEeal2fdWqb6zYA" base_Element="_X8eakamqEeal2fdWqb6zYA"/>
+  <JavaExtensions:JavaSetter xmi:id="_X9hjUamqEeal2fdWqb6zYA" base_Element="_X8fBlKmqEeal2fdWqb6zYA"/>
+  <JavaExtensions:JavaGetter xmi:id="_X9hjUqmqEeal2fdWqb6zYA" base_Element="_X8eal6mqEeal2fdWqb6zYA"/>
+  <JavaExtensions:JavaGetter xmi:id="_X9hjU6mqEeal2fdWqb6zYA" base_Element="_X8fBlamqEeal2fdWqb6zYA"/>
+  <JavaExtensions:JavaSetter xmi:id="_X9hjVKmqEeal2fdWqb6zYA" base_Element="_X8eanqmqEeal2fdWqb6zYA"/>
+  <JavaExtensions:JavaSetter xmi:id="_X9hjVamqEeal2fdWqb6zYA" base_Element="_X8fBlqmqEeal2fdWqb6zYA"/>
+  <JavaExtensions:JavaGetter xmi:id="_X9hjVqmqEeal2fdWqb6zYA" base_Element="_X8eapKmqEeal2fdWqb6zYA"/>
+  <JavaExtensions:JavaGetter xmi:id="_X9iKYKmqEeal2fdWqb6zYA" base_Element="_X8fBl6mqEeal2fdWqb6zYA"/>
+  <JavaExtensions:JavaSetter xmi:id="_X9iKYamqEeal2fdWqb6zYA" base_Element="_X8eaq6mqEeal2fdWqb6zYA"/>
+  <JavaExtensions:JavaSetter xmi:id="_X9iKYqmqEeal2fdWqb6zYA" base_Element="_X8fBmKmqEeal2fdWqb6zYA"/>
+  <JavaExtensions:JavaGetter xmi:id="_X9iKY6mqEeal2fdWqb6zYA" base_Element="_X8easamqEeal2fdWqb6zYA"/>
+  <JavaExtensions:JavaGetter xmi:id="_X9iKZKmqEeal2fdWqb6zYA" base_Element="_X8fBmamqEeal2fdWqb6zYA"/>
+  <JavaExtensions:JavaSetter xmi:id="_X9iKZamqEeal2fdWqb6zYA" base_Element="_X8eauKmqEeal2fdWqb6zYA"/>
+  <JavaExtensions:JavaSetter xmi:id="_X9ixcKmqEeal2fdWqb6zYA" base_Element="_X8fBmqmqEeal2fdWqb6zYA"/>
+  <JavaExtensions:JavaGetter xmi:id="_X9ixcamqEeal2fdWqb6zYA" base_Element="_X8fBgqmqEeal2fdWqb6zYA"/>
+  <JavaExtensions:JavaGetter xmi:id="_X9ixcqmqEeal2fdWqb6zYA" base_Element="_X8fBm6mqEeal2fdWqb6zYA"/>
+  <JavaExtensions:JavaSetter xmi:id="_X9ixc6mqEeal2fdWqb6zYA" base_Element="_X8fBiamqEeal2fdWqb6zYA"/>
+  <JavaExtensions:JavaSetter xmi:id="_X9ixdKmqEeal2fdWqb6zYA" base_Element="_X8fBnKmqEeal2fdWqb6zYA"/>
+  <JavaExtensions:JavaDataType xmi:id="_X9ixdamqEeal2fdWqb6zYA" base_Element="_X8fBnamqEeal2fdWqb6zYA"/>
+</xmi:XMI>
