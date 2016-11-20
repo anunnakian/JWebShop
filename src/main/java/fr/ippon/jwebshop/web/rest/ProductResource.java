@@ -26,7 +26,7 @@ import java.util.Optional;
 public class ProductResource {
 
     private final Logger log = LoggerFactory.getLogger(ProductResource.class);
-        
+
     @Inject
     private ProductRepository productRepository;
 
@@ -117,4 +117,21 @@ public class ProductResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("product", id.toString())).build();
     }
 
+    /**
+     * GET  /products/:id : get the "id" product.
+     *
+     * @param id the id of the product to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the product, or with status 404 (Not Found)
+     */
+    @GetMapping("/products/category/{id}")
+    @Timed
+    public ResponseEntity<List<Product>> getProductByCategory(@PathVariable Long id) {
+        log.debug("REST request to get Products by Category : {}", id);
+        List<Product> products = productRepository.findByCategory(id);
+        return Optional.ofNullable(products)
+            .map(result -> new ResponseEntity<>(
+                result,
+                HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
 }
