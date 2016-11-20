@@ -147,16 +147,16 @@ angular.module('ngCart', ['ngCart.directives'])
         };
 
         this.empty = function () {
-            
+
             $rootScope.$broadcast('ngCart:change', {});
             this.$cart.items = [];
             localStorage.removeItem('cart');
         };
-        
+
         this.isEmpty = function () {
-            
+
             return (this.$cart.items.length > 0 ? false : true);
-            
+
         };
 
         this.toObject = function() {
@@ -428,6 +428,7 @@ angular.module('ngCart.directives', ['ngCart.fulfilment'])
                     fulfilmentProvider.setSettings($scope.settings);
                     fulfilmentProvider.checkout()
                         .success(function (data, status, headers, config) {
+                            $scope.ngCart.empty();
                             $rootScope.$broadcast('ngCart:checkout_succeeded', data);
                         })
                         .error(function (data, status, headers, config) {
@@ -498,8 +499,8 @@ angular.module('ngCart.fulfilment', [])
 .service('ngCart.fulfilment.http', ['$http', 'ngCart', function($http, ngCart){
 
         this.checkout = function(settings){
-            return $http.post(settings.url,
-                { data: ngCart.toObject(), options: settings.options});
+            console.log(ngCart.toObject());
+            return $http.post(settings.url, ngCart.toObject(), settings.options);
         }
  }])
 

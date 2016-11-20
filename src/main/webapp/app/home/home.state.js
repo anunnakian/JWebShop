@@ -45,6 +45,7 @@
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('product');
                     $translatePartialLoader.addPart('home');
+                    $translatePartialLoader.addPart('orderObject');
                     return $translate.refresh();
                 }],
                 entity: ['$stateParams', 'Product', function($stateParams, Product) {

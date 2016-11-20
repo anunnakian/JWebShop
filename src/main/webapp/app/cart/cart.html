@@ -1,11 +1,16 @@
+<jhi-alert></jhi-alert>
 <div ng-cloak>
     <div class="row">
         <div class="col-md-12">
             <h1>Your Cart</h1>
 
             <ngcart-cart></ngcart-cart>
+        </div>
+    </div>
 
-            <ngcart-checkout></ngcart-checkout>
+    <div class="row">
+        <div class="col-md-12 text-right">
+            <ngcart-checkout service="http" settings="{ url:'/api/checkout' }"></ngcart-checkout>
         </div>
     </div>
 </div>

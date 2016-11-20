@@ -1,15 +1,26 @@
 package fr.ippon.jwebshop.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import fr.ippon.jwebshop.domain.OrderLine;
 import fr.ippon.jwebshop.domain.OrderObject;
 
+import fr.ippon.jwebshop.domain.Product;
+import fr.ippon.jwebshop.repository.OrderLineRepository;
 import fr.ippon.jwebshop.repository.OrderObjectRepository;
+import fr.ippon.jwebshop.repository.ProductRepository;
+import fr.ippon.jwebshop.repository.UserRepository;
+import fr.ippon.jwebshop.security.AuthoritiesConstants;
+import fr.ippon.jwebshop.security.SecurityUtils;
+import fr.ippon.jwebshop.service.dto.CartDTO;
+import fr.ippon.jwebshop.service.dto.CartItemDTO;
 import fr.ippon.jwebshop.web.rest.util.HeaderUtil;
+import fr.ippon.jwebshop.web.rest.vm.ManagedUserVM;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
@@ -27,9 +38,18 @@ import java.util.Optional;
 public class OrderObjectResource {
 
     private final Logger log = LoggerFactory.getLogger(OrderObjectResource.class);
-        
+
     @Inject
     private OrderObjectRepository orderObjectRepository;
+
+    @Inject
+    private ProductRepository productRepository;
+
+    @Inject
+    private OrderLineRepository orderLineRepository;
+
+    @Inject
+    private UserRepository userRepository;
 
     /**
      * POST  /order-objects : Create a new orderObject.
@@ -118,4 +138,31 @@ public class OrderObjectResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("orderObject", id.toString())).build();
     }
 
+    /**
+     * POST  /checkout : Create a new order from a cart.
+     *
+     * @param cart the Order to create.
+     * @return the ResponseEntity with status 201 (Created) and with body the new orderObject, or with status 400 (Bad Request) if the orderObject has already an ID
+     * @throws URISyntaxException if the Location URI syntax is incorrect
+     */
+    @PostMapping("/checkout")
+    @Timed
+    public ResponseEntity<OrderObject> checkout(@Valid @RequestBody CartDTO cart) throws URISyntaxException {
+        log.debug("REST request to save OrderObject : {}", cart);
+        OrderObject orderObject = new OrderObject();
+        orderObject.setUser(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get());
+        OrderObject result = orderObjectRepository.save(orderObject);
+        for (CartItemDTO item : cart.getItems()) {
+            OrderLine line = new OrderLine();
+            Product p = productRepository.findOne(item.getId());
+            line.setProduct(p);
+            line.setQty(item.getQuantity());
+            line.setOrderObject(result);
+            orderLineRepository.save(line);
+            log.debug("REST request to save OrderLine : {}", line);
+        }
+        return ResponseEntity.created(new URI("/api/checkout/" + result.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert("orderObject", result.getId().toString()))
+            .body(result);
+    }
 }
