@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Code="http:///schemas/Code/_X8-JsKmqEeal2fdWqb6zYA/0" xmlns:JavaExtensions="http:///schemas/JavaExtensions/_X8m9UKmqEeal2fdWqb6zYA/0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xsi:schemaLocation="http:///schemas/Code/_X8-JsKmqEeal2fdWqb6zYA/0 Code.profile.xmi#_X9ZAd6mqEeal2fdWqb6zYA http:///schemas/JavaExtensions/_X8m9UKmqEeal2fdWqb6zYA/0 JavaExtensions.profile.xmi#_X8_X16mqEeal2fdWqb6zYA">
   <uml:Model xmi:id="_X8eacKmqEeal2fdWqb6zYA" name="jwebshop">
     <eAnnotations xmi:id="_X8eacamqEeal2fdWqb6zYA" source="Objing">
