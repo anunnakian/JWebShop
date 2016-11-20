@@ -1,0 +1,35 @@
+<h3>{{vm.product.productName}}</h3>
+<div class="row">
+    <div class="col-md-4">
+        <img data-ng-src="{{'data:' + vm.product.pictureContentType + ';base64,' + vm.product.picture}}"
+             style="max-width: 100%;"/>
+    </div>
+    <div class="col-md-8">
+        <jhi-alert-error></jhi-alert-error>
+        <dl class="dl-horizontal jh-entity-details">
+
+
+            <dt><span data-translate="jWebShopApp.product.reference">Reference</span></dt>
+            <dd>
+                <span>{{vm.product.reference}}</span>
+            </dd>
+            <dt><span data-translate="jWebShopApp.product.category">Category</span></dt>
+            <dd>
+                <a ui-sref="category-detail({id:vm.product.category.id})">{{vm.product.category.categoryName}}</a>
+            </dd>
+            <dt><span data-translate="jWebShopApp.product.description">Description</span></dt>
+            <dd>
+                <span>{{vm.product.description}}</span>
+            </dd>
+            <dd>
+                <h3 class="price ng-binding">{{(vm.product.price | number:2) + "€"}}</h3>
+                <ngcart-addtocart id="{{ vm.product.id }}" name="{{ vm.product.productName }}"
+                                  price="{{ vm.product.price }}" quantity="1" quantity-max="30" data="vm.product">
+                    <span data-translate="product.action.addToCart"></span>
+                </ngcart-addtocart>
+            </dd>
+        </dl>
+
+
+    </div>
+</div>
