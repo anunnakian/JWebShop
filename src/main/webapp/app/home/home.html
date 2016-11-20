@@ -5,6 +5,9 @@
             <p class="lead" data-translate="home.subtitle">Product list</p>
 
             <div class="table-responsive">
+                <div class="alert alert-warning" role="alert" ng-show="vm.products.length === 0">
+                    The product list is empty
+                </div>
 
                 <div class="col-xs-3 ng-scope" ng-repeat="product in vm.products track by product.id">
                     <div class="thumbnail">
