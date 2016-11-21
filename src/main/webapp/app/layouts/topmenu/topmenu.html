@@ -20,7 +20,7 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li ng-class="{active: vm.$state.includes('user')}" has-authority="ROLE_USER">
+                <li ng-class="{active: vm.$state.includes('user')}">
                     <a ui-sref="cart" ng-click="vm.collapseNavbar()" class="cart-link">
                         <ngcart-summary></ngcart-summary>
                     </a>

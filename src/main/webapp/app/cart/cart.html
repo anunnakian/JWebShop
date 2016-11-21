@@ -8,8 +8,13 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-12 text-right">
+    <div class="row" ng-switch="vm.isAuthenticated()">
+        <div class="col-md-12 text-right" ng-switch-when="false">
+            <a href="" ng-click="vm.login()" id="login" class="btn btn-primary" >
+                <span class="ng-scope">Login to Checkout</span>
+            </a>
+        </div>
+        <div class="col-md-12 text-right" has-authority="ROLE_USER" ng-switch-when="true">
             <ngcart-checkout service="http" settings="{ url:'/api/checkout' }"></ngcart-checkout>
         </div>
     </div>
