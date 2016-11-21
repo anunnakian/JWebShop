@@ -9,18 +9,14 @@ import fr.ippon.jwebshop.repository.OrderLineRepository;
 import fr.ippon.jwebshop.repository.OrderObjectRepository;
 import fr.ippon.jwebshop.repository.ProductRepository;
 import fr.ippon.jwebshop.repository.UserRepository;
-import fr.ippon.jwebshop.security.AuthoritiesConstants;
 import fr.ippon.jwebshop.security.SecurityUtils;
-import fr.ippon.jwebshop.service.dto.CartDTO;
+import fr.ippon.jwebshop.service.dto.MyCartDTO;
 import fr.ippon.jwebshop.service.dto.CartItemDTO;
 import fr.ippon.jwebshop.web.rest.util.HeaderUtil;
-import fr.ippon.jwebshop.web.rest.vm.ManagedUserVM;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
@@ -147,7 +143,7 @@ public class OrderObjectResource {
      */
     @PostMapping("/checkout")
     @Timed
-    public ResponseEntity<OrderObject> checkout(@Valid @RequestBody CartDTO cart) throws URISyntaxException {
+    public ResponseEntity<OrderObject> checkout(@Valid @RequestBody MyCartDTO cart) throws URISyntaxException {
         log.debug("REST request to save OrderObject : {}", cart);
         OrderObject orderObject = new OrderObject();
         orderObject.setUser(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get());

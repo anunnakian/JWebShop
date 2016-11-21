@@ -6,13 +6,13 @@ import java.util.List;
 /**
  * A DTO representing an Order.
  */
-public class CartDTO {
+public class MyCartDTO {
 
     private float subTotal;
     private float totalCost;
     private List<CartItemDTO> items;
 
-    public CartDTO() {
+    public MyCartDTO() {
         items = new ArrayList<>();
     }
 
