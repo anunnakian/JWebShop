@@ -1,6 +1,7 @@
 package fr.ippon.jwebshop.domain;
 
 import io.swagger.annotations.ApiModel;
+import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,6 +14,7 @@ import java.util.Objects;
 @ApiModel(description = "<Enter note text here>")
 @Entity
 @Table(name = "product")
+@Document(indexName = "product")
 public class Product implements Serializable {
 
     private static final long serialVersionUID = 1L;

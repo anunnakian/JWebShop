@@ -4,6 +4,7 @@ import com.codahale.metrics.annotation.Timed;
 import fr.ippon.jwebshop.domain.Product;
 
 import fr.ippon.jwebshop.repository.ProductRepository;
+import fr.ippon.jwebshop.repository.search.ProductSearchRepository;
 import fr.ippon.jwebshop.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +18,10 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
+import static org.elasticsearch.index.query.QueryBuilders.*;
 
 /**
  * REST controller for managing Product.
@@ -29,6 +34,9 @@ public class ProductResource {
 
     @Inject
     private ProductRepository productRepository;
+
+    @Inject
+    private ProductSearchRepository productSearchRepository;
 
     /**
      * POST  /products : Create a new product.
@@ -45,6 +53,7 @@ public class ProductResource {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("product", "idexists", "A new product cannot already have an ID")).body(null);
         }
         Product result = productRepository.save(product);
+        productSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/products/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("product", result.getId().toString()))
             .body(result);
@@ -67,6 +76,7 @@ public class ProductResource {
             return createProduct(product);
         }
         Product result = productRepository.save(product);
+        productSearchRepository.save(result);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("product", product.getId().toString()))
             .body(result);
@@ -114,13 +124,30 @@ public class ProductResource {
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         log.debug("REST request to delete Product : {}", id);
         productRepository.delete(id);
+        productSearchRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("product", id.toString())).build();
     }
 
     /**
-     * GET  /products/:id : get the "id" product.
+     * SEARCH  /_search/products?query=:query : search for the product corresponding
+     * to the query.
      *
-     * @param id the id of the product to retrieve
+     * @param query the query of the product search
+     * @return the result of the search
+     */
+    @GetMapping("/_search/products")
+    @Timed
+    public List<Product> searchProducts(@RequestParam String query) {
+        log.debug("REST request to search Products for query {}", query);
+        return StreamSupport
+            .stream(productSearchRepository.search(queryStringQuery(query)).spliterator(), false)
+            .collect(Collectors.toList());
+    }
+
+    /**
+     * GET  /products/category/:id : get products by "id" category.
+     *
+     * @param id the id of the category to retrieve
      * @return the ResponseEntity with status 200 (OK) and with body the product, or with status 404 (Not Found)
      */
     @GetMapping("/products/category/{id}")
@@ -134,4 +161,5 @@ public class ProductResource {
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+
 }

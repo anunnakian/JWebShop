@@ -4,6 +4,7 @@ import fr.ippon.jwebshop.JWebShopApp;
 
 import fr.ippon.jwebshop.domain.Product;
 import fr.ippon.jwebshop.repository.ProductRepository;
+import fr.ippon.jwebshop.repository.search.ProductSearchRepository;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -60,6 +61,9 @@ public class ProductResourceIntTest {
     private ProductRepository productRepository;
 
     @Inject
+    private ProductSearchRepository productSearchRepository;
+
+    @Inject
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Inject
@@ -76,6 +80,7 @@ public class ProductResourceIntTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         ProductResource productResource = new ProductResource();
+        ReflectionTestUtils.setField(productResource, "productSearchRepository", productSearchRepository);
         ReflectionTestUtils.setField(productResource, "productRepository", productRepository);
         this.restProductMockMvc = MockMvcBuilders.standaloneSetup(productResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
@@ -101,6 +106,7 @@ public class ProductResourceIntTest {
 
     @Before
     public void initTest() {
+        productSearchRepository.deleteAll();
         product = createEntity(em);
     }
 
@@ -126,6 +132,10 @@ public class ProductResourceIntTest {
         assertThat(testProduct.getReference()).isEqualTo(DEFAULT_REFERENCE);
         assertThat(testProduct.getPicture()).isEqualTo(DEFAULT_PICTURE);
         assertThat(testProduct.getPictureContentType()).isEqualTo(DEFAULT_PICTURE_CONTENT_TYPE);
+
+        // Validate the Product in ElasticSearch
+        Product productEs = productSearchRepository.findOne(testProduct.getId());
+        assertThat(productEs).isEqualToComparingFieldByField(testProduct);
     }
 
     @Test
@@ -179,6 +189,7 @@ public class ProductResourceIntTest {
     public void updateProduct() throws Exception {
         // Initialize the database
         productRepository.saveAndFlush(product);
+        productSearchRepository.save(product);
         int databaseSizeBeforeUpdate = productRepository.findAll().size();
 
         // Update the product
@@ -206,6 +217,10 @@ public class ProductResourceIntTest {
         assertThat(testProduct.getReference()).isEqualTo(UPDATED_REFERENCE);
         assertThat(testProduct.getPicture()).isEqualTo(UPDATED_PICTURE);
         assertThat(testProduct.getPictureContentType()).isEqualTo(UPDATED_PICTURE_CONTENT_TYPE);
+
+        // Validate the Product in ElasticSearch
+        Product productEs = productSearchRepository.findOne(testProduct.getId());
+        assertThat(productEs).isEqualToComparingFieldByField(testProduct);
     }
 
     @Test
@@ -213,6 +228,7 @@ public class ProductResourceIntTest {
     public void deleteProduct() throws Exception {
         // Initialize the database
         productRepository.saveAndFlush(product);
+        productSearchRepository.save(product);
         int databaseSizeBeforeDelete = productRepository.findAll().size();
 
         // Get the product
@@ -220,8 +236,32 @@ public class ProductResourceIntTest {
                 .accept(TestUtil.APPLICATION_JSON_UTF8))
                 .andExpect(status().isOk());
 
+        // Validate ElasticSearch is empty
+        boolean productExistsInEs = productSearchRepository.exists(product.getId());
+        assertThat(productExistsInEs).isFalse();
+
         // Validate the database is empty
         List<Product> products = productRepository.findAll();
         assertThat(products).hasSize(databaseSizeBeforeDelete - 1);
+    }
+
+    @Test
+    @Transactional
+    public void searchProduct() throws Exception {
+        // Initialize the database
+        productRepository.saveAndFlush(product);
+        productSearchRepository.save(product);
+
+        // Search the product
+        restProductMockMvc.perform(get("/api/_search/products?query=id:" + product.getId()))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+            .andExpect(jsonPath("$.[*].id").value(hasItem(product.getId().intValue())))
+            .andExpect(jsonPath("$.[*].productName").value(hasItem(DEFAULT_PRODUCT_NAME.toString())))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
+            .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.doubleValue())))
+            .andExpect(jsonPath("$.[*].reference").value(hasItem(DEFAULT_REFERENCE.toString())))
+            .andExpect(jsonPath("$.[*].pictureContentType").value(hasItem(DEFAULT_PICTURE_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].picture").value(hasItem(Base64Utils.encodeToString(DEFAULT_PICTURE))));
     }
 }
